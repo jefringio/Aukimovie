@@ -19,10 +19,32 @@
         <input type="number"  min="1900" max="2019" name="year" REQUIRED>
         <br>
         <p>actor name</p>
-        <input type="text"  name="actorname" REQUIRED>
+        <?php include "config.php"; 
+            $sql = "SELECT actorname FROM actortable";
+            $result = $conn->query($sql);
+            ?>
+            <select name="actorname[]" multiple required>
+            <?php
+            while ($rows = $result->fetch_assoc()) {
+                $actor = $rows['actorname'];
+                echo "<option value='$actor'>$actor</option>";
+            }
+            ?>
+            </select>
         <br>
         <p>genre</p>
-        <input type="text"  name="genre" REQUIRED>
+        <?php include "config.php"; 
+            $sql = "SELECT genrename FROM genretable";
+            $result = $conn->query($sql);
+            ?>
+            <select name="genre[]" multiple required>
+            <?php
+            while ($rows = $result->fetch_assoc()) {
+                $genre = $rows['genrename'];
+                echo "<option value='$genre'>$genre</option>";
+            }
+            ?>
+            </select>
         <br>
         <p>rating</p>
         <input type="number" min="0" max="10" name="rating" REQUIRED>

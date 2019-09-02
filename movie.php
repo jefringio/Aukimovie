@@ -97,7 +97,7 @@
     }
     function editrecord(id,obj){
               
-        console.log('hello');      
+        console.log(id);      
         // console.log();
         var id = id;
         var year = $(obj).parents("#main").find("#year").text();
@@ -112,7 +112,7 @@
             "server.php?req=edit",
             {year:year , actorname:actorname , genre:genre , rating:rating , id:id
             },function(data){
-                alert(data);
+                // alert(data);
                 // if(data=="added"){
                 //     // alert("added");
                 //     // console.log('ys');
@@ -156,7 +156,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" onclick=" addactor() " data-dismiss="modal">Update</button>
+                <button type="submit" class="btn btn-primary" onclick=" addactor() " data-dismiss="modal">ADD</button>
             </div>
             </div>
         </div>
@@ -182,7 +182,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" onclick=" addgenre() " data-dismiss="modal">Update</button>
+                <button type="submit" class="btn btn-primary" onclick=" addgenre() " data-dismiss="modal">ADD</button>
             </div>
             </div>
         </div>
