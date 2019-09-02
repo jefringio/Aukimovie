@@ -21,15 +21,16 @@
 
                     while($row = $result->fetch_assoc()) {
                         $id = $row['id'];
-                        echo '<tr>';
+                        echo '<tr id="main">';
                         echo    "<td> <img src=\"". $row["thumbnail"]. "\" width=\"30px\" height=\"50px\"></img> </td>";
                         echo    '<td> '.$row["moviename"].'  </td>';
-                        echo    '<td class="'.$id.'" > '.$row["movieyear"].'  </td>';
-                        echo    '<td class="'.$id.'" > '.$row["actorname"].'  </td>';
-                        echo    '<td class="'.$id.'" > '.$row["genre"].'  </td>';
-                        echo    '<td class="'.$id.'" > '.$row["rating"].'  </td>';
+                        echo    '<td class="'.$id.'" id="year" > '.$row["movieyear"].'  </td>';
+                        echo    '<td class="'.$id.'" id="actorname" > '.$row["actorname"].'  </td>';
+                        echo    '<td class="'.$id.'" id="genrename" > '.$row["genre"].'  </td>';
+                        echo    '<td class="'.$id.'" id="rating" > '.$row["rating"].'  </td>';
                         echo    '<td > 
-                                    <button type="button" id ="editbtn" onclick= "editrecord('.$id.') "> Edit</button>
+                                    <button type="button" id ="editbtn" onclick= "editrecord('.$id.',this) "> submit</button>
+                                    <button type="button" id ="editbtn" onclick="ready('.$id.')"> Edit</button>
                                     <button type="button" onclick ="deleteRecord(' .$id. ') "> Delete</button>';
                         echo    '</td>';
                         echo '</tr>'; 

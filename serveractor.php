@@ -3,7 +3,7 @@
 include "config.php";
 if ($_SERVER["REQUEST_METHOD"]== "POST"){
     $name=$_POST["f"];
-    if($_REQUEST['req']=='gen'){
+    if($_REQUEST['req']=='genre'){
         $sql = "INSERT INTO genretable (genrename)
         VALUES ('$name')";
                 

@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
     <title>AukiMovies</title>
+    <style>
+       .editable {background-color: wheat;}
+    </style>
 
    
     <script>
@@ -67,7 +70,7 @@
                 var genrename =$('#genre-name').val();
                 console.log("gen =" + genrename);
                     $.ajax({
-                        url: "serveractor.php?req=gen",
+                        url: "serveractor.php?req=genre",
                         type: "POST",
                         data: {
                             f:genrename
@@ -86,15 +89,43 @@
                         }
                 });
             }
-          function editrecord(id){
-              
-              console.log(id);
-             
-              
+    function ready(id){
         var $div=$('.'+id), isEditable=$div.is('.editable');
-        $('.'+id).prop('contenteditable',!isEditable).toggleClass('editable')
+        $('.'+id).prop('contenteditable',!isEditable).toggleClass('editable');
+        
+        
+    }
+    function editrecord(id,obj){
+              
+        console.log('hello');      
+        // console.log();
+        var id = id;
+        var year = $(obj).parents("#main").find("#year").text();
+        console.log(year);
+        var actorname = $(obj).parents("#main").find("#actorname").text();
+        console.log(actorname);
+        var genre = $(obj).parents("#main").find("#genrename").text();
+        console.log(genre);
+        var rating = $(obj).parents("#main").find("#rating").text();
+        console.log(rating);
+        $.post(
+            "server.php?req=edit",
+            {year:year , actorname:actorname , genre:genre , rating:rating , id:id
+            },function(data){
+                alert(data);
+                // if(data=="added"){
+                //     // alert("added");
+                //     // console.log('ys');
+                //     getMovie();
+                // }
+                // else{
+                //     // alert(data)
+                //     console.log('error');
+                // }
+            }
+        );
 
-                    }
+    }
         
        
     </script>
